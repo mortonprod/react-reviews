@@ -1,16 +1,14 @@
-﻿///File contact - the link between the contact actions and presentation.
+﻿/// <reference path="../../typings/index.d.ts" />
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Provider, connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import ReviewsPresentation from './reviewPresentation';
+import ReviewsPresentation from './reviewsPresentation';
 interface review { name: string, stars: number, message: string }
 
 interface props {
-    sendReviewToServer: any,
-    reviews: Array<review>,
-    sending: any,
-    showNumber: number
+    sendReviewToServer?: any,
+    reviews?: Array<review>,
+    sending?: any,
+    showNumber?: number
 }
 interface state {
     titleStyle: string,
@@ -45,11 +43,6 @@ class Reviews extends React.Component<props, state> {
         showNumber: 5
     }
     componentWillUpdate() {
-        if (this.props.sending) {
-            this.sendingClass = "sending"
-        } else {
-            this.sendingClass = ""
-        }
     }
     componentWillMount() {
         let temp = [] as any
@@ -138,3 +131,7 @@ class Reviews extends React.Component<props, state> {
         );
     }
 }
+ReactDOM.render(
+    <Reviews/>,
+    document.getElementById('root')
+)

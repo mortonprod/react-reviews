@@ -1,8 +1,9 @@
-﻿import * as React from 'react';
+﻿/// <reference path="../../typings/index.d.ts" />
+import * as React from 'react';
 ///import { ReactCSSTransitionGroup } from 'react-addons-css-transition-group';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group') // ES5 with npm
-const Rating = require('react-rating');
 import "animate.css"
+const Rating = require('react-rating');
 //import 'react-bootstrap-star-rating/example/star-rating.min.css';
 interface state {
 }
