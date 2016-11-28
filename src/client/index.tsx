@@ -16,7 +16,7 @@ interface state {
     reviewsToPass: Array<review>
 
 }
-class Reviews extends React.Component<props, state> {
+export default class Reviews extends React.Component<props, state> {
     sendingClass = "";
     constructor(props: any) {
         super(props);

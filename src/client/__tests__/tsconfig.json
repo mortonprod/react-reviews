@@ -1,7 +1,6 @@
 ﻿{
   "files": [
-    "./src/client/index.tsx",
-    "./typings/index.d.ts"
+    "./reviews.spec.tsx"
   ],
   "compilerOptions": {
     "removeComments": true,
@@ -11,13 +10,9 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noEmitOnError": false,
-    "outDir": "./dist/client"
+    "outDir": "../../../dist/"
   },
-  "include": [
-    "./src/client/*"
-  ],
   "exclude": [
-    "node_modules",
-    "./src/client/__tests__/*"
+    "node_modules"
   ]
 }

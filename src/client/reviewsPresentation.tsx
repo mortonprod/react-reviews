@@ -97,7 +97,7 @@ export default class ReviewsPresentation extends React.Component<props, state> {
         console.log("initial stars: " + this.props.initialStars);
         return (
             <div  className="row text-center">
-                <h1 className={this.props.titleStyle}>Give us a review</h1>
+                <h1 className={this.props.titleStyle}>Give us a review!!!!</h1>
                 <form name="sentMessage" id="contactForm" noValidate>
                     <div className="row control-group">
                         <div className="form-group col-xs-12 floating-label-form-group controls">
