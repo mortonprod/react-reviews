@@ -7,9 +7,8 @@
   "homepage": "https://github.com/mortonprod/react-reviews",
   "scripts": {
     "build:client": "set NODE_ENV=production&&webpack",
-    "start:tests": "tsc -p src/client/__tests__/tsconfig.json&&jest",
-    "jest": "jest",
-    "start:dev": "set NODE_ENV=development&&node dist/index.js"
+    "start:tests": "tsc -p src/client/tsconfig.json",
+    "start:dev": "set NODE_ENV=development&&node dist/server.js"
   },
   "dependencies": {
     "animate.css": "^3.5.2",
@@ -33,6 +32,7 @@
     "jest-cli": "^17.0.3",
     "postcss-loader": "^1.1.1",
     "proxy-middleware": "^0.15.0",
+    "react-test-renderer": "^15.4.1",
     "sass-loader": "^4.0.2",
     "serve-static": "^1.11.1",
     "source-map-loader": "^0.1.5",

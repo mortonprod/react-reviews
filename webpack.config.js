@@ -3,7 +3,7 @@
 var webpack = require('webpack');
 var config = {
     entry: {
-        index: ['./src/client/index.tsx'],
+        index: ['./src/client/reviews.tsx'],
         vendor: ['react', 'react-dom']
 
     },

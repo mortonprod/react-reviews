@@ -1,6 +1,6 @@
 ﻿{
   "files": [
-    "index.ts"
+    "server.ts"
   ],
   "compilerOptions": {
     "removeComments": true,
