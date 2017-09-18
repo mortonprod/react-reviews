@@ -1,4 +1,4 @@
-#react-reviews
+# React-reviews
 
 This is a react review component. It displays props as users reviews.
 
