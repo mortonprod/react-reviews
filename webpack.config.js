@@ -1,9 +1,10 @@
 ﻿'use strict';
 //var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var webpack = require('webpack');
+var path = require('path');
 var config = {
     entry: {
-        index: ['./src/client/reviews.tsx'],
+        index: ['./src/reviews.tsx'],
         vendor: ['react', 'react-dom']
 
     },
@@ -18,9 +19,9 @@ var config = {
     ],
 
     output: {
-        path: '/dist/bundle',
-        filename: '[name].js',
-        libraryTarget: 'umd' // Need this for static site generation.
+				path: path.resolve(__dirname, 'dist'),
+        filename: '[name].js'
+        //libraryTarget: 'umd' // Need this for static site generation.
     },
     resolve: {
         extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]

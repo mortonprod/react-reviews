@@ -1,9 +1,12 @@
 ﻿{
   "files": [
-    "./src/client/index.tsx",
-    "./typings/index.d.ts"
-  ],
+    "./src/reviews.tsx"
+ 	],
   "compilerOptions": {
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"types": ["node"],
+		"typeRoots": [ "./node_modules/@types" ],
     "removeComments": true,
     "noImplicitAny": true,
     "target": "es5",
@@ -11,13 +14,13 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noEmitOnError": false,
-    "outDir": "./dist/client"
+    "outDir": "./dist/"
   },
   "include": [
-    "./src/client/*"
+    "./src/*"
   ],
   "exclude": [
     "node_modules",
-    "./src/client/__tests__/*"
+    "./src/__tests__/*"
   ]
 }
