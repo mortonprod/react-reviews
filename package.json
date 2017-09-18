@@ -6,9 +6,9 @@
   "author": "Alexander Morton <mortonprod@gmail.com>",
   "homepage": "https://github.com/mortonprod/react-reviews",
   "scripts": {
-    "build:client": "set NODE_ENV=production&&webpack",
+    "build": "set NODE_ENV=production&&webpack&&gulp",
     "start:tests": "tsc -p src/client/tsconfig.json",
-    "start:dev": "set NODE_ENV=development&&node dist/server.js"
+    "start": "NODE_ENV=development && webpack-dev-server --content-base dist/"
   },
   "dependencies": {
     "animate.css": "^3.5.2",
@@ -16,9 +16,14 @@
     "react": "^15.3.2",
     "react-addons-css-transition-group": "^15.4.1",
     "react-dom": "^15.3.2",
-    "react-rating": "^0.6.3"
+    "react-rating": "^0.6.3",
+    "ts-node": "^3.3.0"
   },
   "devDependencies": {
+    "@types/node": "^8.0.28",
+    "@types/react": "^16.0.5",
+    "@types/react-addons-css-transition-group": "^15.0.3",
+    "@types/react-dom": "^15.5.4",
     "css-loader": "^0.23.1",
     "express-serve-static-core": "^0.1.1",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -30,6 +35,7 @@
     "imports-loader": "^0.6.5",
     "jest": "^17.0.3",
     "jest-cli": "^17.0.3",
+    "path": "^0.12.7",
     "postcss-loader": "^1.1.1",
     "proxy-middleware": "^0.15.0",
     "react-test-renderer": "^15.4.1",
@@ -38,7 +44,7 @@
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
     "ts-loader": "^1.2.0",
-    "typescript": "^2.0.9",
+    "typescript": "^2.5.2",
     "url": "^0.11.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
