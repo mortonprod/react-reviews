@@ -1,63 +1,40 @@
-﻿# React Review Component
+#react-reviews
 
-A review component based on bootstrap and animate.css. Written in typescript.
-Setup with
+This is a react review component. It displays props as users reviews.
 
-* Node and docker.
-* Redux and ismorphic react.
-* Webpack and webpack-dev-server.
-* Test driven development with jest.
-* Deployed to npm
+## Installation
+To install this component into your project run:
 
-CHECK THE BRANCHES. If you just want the component then run
-
-```
-npm install react-review
-```
-
-This will come with styles attached to component.
-
-##Functionality
-
-* A default initial animation when entering the component
-* Can replace the child component which it encapsulates and hide reviews.
-* Add reviews through props 
-	* Name
-	* Message
-	* Rating
-* Add your own look with props 
+`npm install @mortonprod/react-reviews`
 
 
-## Adding to the repository 
+## Usage
 
-If you want to play about with this component
-```
-git clone https://github.com/mortonprod/react-reviews <Your-branch-name>
-```
+Import the component like so:
 
-##The different branches
-
-Each branch will be started up in different ways. Each part is as simple as possible
-so you can see the progression in complexity. The idea is to go from component to deployment
+`
+import Product from @mortonprod/react-reviews
+`
 
 
-###Hot module replacement
-You can setup a webpack-dev-server running through a node js proxy server with:
-```
-gulp 
-npm run start:dev
-```
+then import the css:
 
-This will create node server and run webpack dev server from it. Webpack dev server acts as a proxy.
 
-### Test driven development with jest.
+`
+import @mortonprod/react-reviews/dist/index.css
+` 
 
-Tests are run with 
+Note you must pull the css independently of the component. 
 
-```
-npm run tests
-```
 
-###Redux and isomorphic react 
+To run in development mode do:
 
-###Inclusion of docker
+`
+npm run start
+`
+
+This will run the app on localhost:8080.
+
+## Contributing
+
+You are free to contribute to this component if you wish.
