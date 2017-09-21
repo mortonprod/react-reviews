@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import ReviewsPresentation from './reviewsPresentation';
+import ReviewsPresentation from './reviewsPresentation.tsx';
 interface review { name: string, stars: number, message: string }
 
 interface props {
@@ -23,7 +23,7 @@ export default class Reviews extends React.Component<props, state> {
     counterToShow = 1;
     static defaultProps = {
         reviews: [
-            { name: "Alex1", stars: 4, message: "Something like a message" },
+            { name: "Alex11", stars: 4, message: "Something like a message" },
             { name: "Alex2", stars: 4, message: "Something like a message" },
             { name: "Alex3", stars: 4, message: "Something like a message" },
             { name: "Alex4", stars: 4, message: "Something like a message" },
