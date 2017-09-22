@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 var webpack = require('webpack');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -10,7 +11,7 @@ module.exports = merge(common, {
 			'process.env': {
 			  'NODE_ENV': JSON.stringify('production')
 		  }
-	  })
+    })
   ],
   externals: {
    'react': 'commonjs react', 

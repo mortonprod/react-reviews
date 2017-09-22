@@ -2,6 +2,7 @@
 //import  { ReactCSSTransitionGroup}  from 'react-addons-css-transition-group';
 //var ReactCSSTransitionGroup = require('react-addons-css-transition-group') // ES5 with npm
 import "animate.css"
+import "./reviewsPresentation.scss";
 //const Rating = require('react-rating');
 //import 'react-bootstrap-star-rating/example/star-rating.min.css';
 interface state {
@@ -95,11 +96,11 @@ export default class ReviewsPresentation extends React.Component<props, state> {
         console.log("initial stars: " + this.props.initialStars);
         return (
             <div  className="row text-center">
-                <h1 className={this.props.titleStyle}>Give us a review!!!!</h1>
+                <h1 className={this.props.titleStyle + "review"}>Give us a review!!!!</h1>
                 <form name="sentMessage" id="contactForm" noValidate>
                     <div className="row control-group">
                         <div className="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Message</label>
+                            <label>Messages</label>
                             <textarea ref={(input) => this.ctrls.message = input} defaultValue="" rows={5} className="form-control" placeholder="Review" id="message" required data-validation-required-message="Please enter a review."></textarea>
                         </div>
                     </div>
