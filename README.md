@@ -1,6 +1,6 @@
 # React-reviews
 
-This is a react review component. It displays props as users reviews.
+This is a react review component. It will take in reviews data as a property.
 
 ## Installation
 To install this component into your project run:

@@ -1,126 +1,148 @@
-﻿import * as React from 'react';
-//import  { ReactCSSTransitionGroup}  from 'react-addons-css-transition-group';
-//var ReactCSSTransitionGroup = require('react-addons-css-transition-group') // ES5 with npm
-import "animate.css"
+﻿import "animate.css";
+import * as React from "react";
 import "./reviewsPresentation.scss";
-//const Rating = require('react-rating');
-//import 'react-bootstrap-star-rating/example/star-rating.min.css';
-interface state {
-}
-interface review { name: string, stars: number, message: string }
-interface props {
-    reviews: Array<review>,
-    submit: any,
-    titleStyle?: string,
-    initialStars?: number,
-    moreHandler?: Function,
-    showHandler?: Function
-}
 
-export default class ReviewsPresentation extends React.Component<props, state> {
+/**
+ * @param {string} reviews The reviews to show.
+ * @param {function} submit The submit button is an action to take after pressin submit.
+ * @param {string} titleStyle The style of the title.
+ * @param {number} stars The number of stars the users review should have.
+ * @param {function} moreHandler Request more reviews
+ * @param {function} showHandler
+ * @param {boolean} isNoMoreReviews This is a boolean to remove the show more button.
+ * @param {string} title The heading of review component
+ */
+interface IProps {
+    reviews: review[];
+    submit: any;
+    reviewsHeader?: string;
+    reviewsForm?: string;
+    stars?: number;
+    moreHandler?: any;
+    showHandler?: any;
+    isNoMoreReviews?: boolean;
+    title?: string;
+}
+/**
+ * This component should have not state. The props should completely define this component.
+ */
+class ReviewsPresentation extends React.Component<IProps> {
+    public static defaultProps = {
+        initialStars: 5,
+        moreHandler: null as any,
+        reviews: [] as any,
+        reviewsForm: "reviews__form",
+        reviewsHeader: "reviews__header",
+        submit: null as any,
+        title: "Reviews",
+    };
+    private ctrls: {
+        message?: HTMLTextAreaElement;
+        name?: HTMLInputElement;
+        email?: HTMLInputElement;
+    } = {};
+    private noMoreReviews = false;
     constructor(props: any) {
         super(props);
+        this.lessHandler = this.lessHandler.bind(this);
+        this.moreHandler = this.moreHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
     }
-    noMoreReviews = false;
-    static defaultProps = {
-        reviews: [] as any,
-        submit: null as any,
-        titleStyle: "",
-        initialStars: 5,
-        moreHandler: null as any
+    public componentWillMount() {
     }
-    ctrls: {
-        message?: HTMLTextAreaElement;
-    } = {};
-    componentWillMount() {
+    public componentWillUpdate(nextProps: IProps, nextState: {}) {
     }
-    submitHandler() {
-    }
-    rateChange(rate: number) {
-        console.log("rate change " + rate)
-    }
-    addHandler() {
-    }
-    moreHandler() {
-        if (typeof this.props.showHandler !== "undefined") {
-            this.props.showHandler(true)
-        }
-    }
-    lessHandler() {
-        if (typeof this.props.showHandler !== "undefined") {
-            this.props.showHandler(false)
-        }
-    }
-    componentWillUpdate(nextProps: props, nextState: state) {
-        //console.log("before/after :" + nextProps.reviews.length + " " + this.props.reviews.length);
-        //if(nextProps.reviews.length === this.props.reviews.length){
-        if (nextProps.reviews.length > 10) {
-            this.noMoreReviews = true;
-        } else {
-            this.noMoreReviews = false;
-        }
-    }
-    render() {
+    /**
+     * This function will render the full component.
+     * It will render everything from the props and attach eventhandlers from the props.
+     */
+    public render() {
         let moreLess: any;
-        if (this.noMoreReviews) {
+        if (this.props.isNoMoreReviews) {
             moreLess = (
                 <div>
                     <h2>No More Reviews</h2>
-                    <button onClick={this.lessHandler.bind(this)} className="btn btn-success btn-lg">See Fewer Reviews</button>
+                    <button onClick={this.lessHandler} className="">See Fewer Reviews</button>
                 </div>
-            )
+            );
         } else {
             moreLess = (
                 <div>
-                    <button onClick={this.moreHandler.bind(this)} className="btn btn-success btn-lg">See More Reviews</button>
-                    <button onClick={this.lessHandler.bind(this)} className="btn btn-success btn-lg">See Fewer Reviews</button>
-                </div>
-            )
-        }
-
-
-        var list: Array<any> = [];
-        for (let i = 0; i < this.props.reviews.length; i++) {
-            list.push(
-                <div className="panel panel-primary" key={i}>
-                    <div className="panel-heading">
-                        <h4>{this.props.reviews[i].name} </h4>
-                    </div>
-                    <div className="panel-body">
-                        <p>{this.props.reviews[i].message}</p>
-                    </div>
+                    <button onClick={this.moreHandler} className="">See More Reviews</button>
+                    <button onClick={this.lessHandler} className="">See Fewer Reviews</button>
                 </div>
             );
         }
-        console.log("style: " + this.props.titleStyle);
-        console.log("initial stars: " + this.props.initialStars);
-        return (
-            <div  className="row text-center">
-                <h1 className={this.props.titleStyle + "review"}>Give us a review!!!!</h1>
-                <form name="sentMessage" id="contactForm" noValidate>
-                    <div className="row control-group">
-                        <div className="form-group col-xs-12 floating-label-form-group controls">
-                            <label>Messages</label>
-                            <textarea ref={(input) => this.ctrls.message = input} defaultValue="" rows={5} className="form-control" placeholder="Review" id="message" required data-validation-required-message="Please enter a review."></textarea>
-                        </div>
+        const list: any[] = [];
+        for (let i = 0; i < this.props.reviews.length; i++) {
+            list.push(
+                <article className="" key={i}>
+                    <div className="">
+                        <h4>{this.props.reviews[i].name} </h4>
                     </div>
-                    <br/>
-                    <div id="success"></div>
-                    <div className="row">
-                        <div className="col-xs-12">
-                            <button onClick={this.submitHandler.bind(this)} className="btn btn-success btn-lg">Send!!!</button>
-                        </div>
+                    <div className="">
+                        <p>{this.props.reviews[i].message}</p>
+                    </div>
+                    <div className="">
+                        <p>{this.props.reviews[i].message}</p>
+                    </div>
+                    <div className="">
+                        <p>{this.props.reviews[i].pic}</p>
+                    </div>
+                    <div className="">
+                        <p>{this.props.reviews[i].verified}</p>
+                    </div>
+                    <div className="">
+                        <p>{this.props.reviews[i].date}</p>
+                    </div>
+                </article>
+            );
+        }
+        return (
+            <div className="">
+                <h1 className={this.props.reviewsHeader}>{this.props.title}</h1>
+                <form name="" id="" noValidate className={this.props.reviewsForm}>
+                    <div className={this.props.reviewsFormBlock1}>
+                        <label>Name</label>
+                        <input ref={(input) => {this.ctrls.name = input}} defaultValue="" className="" id="" required data-validation-required-message="Name"></input>
+                        <label>Email</label>
+                        <input ref={(input) => this.ctrls.email = input} defaultValue="" className="" id="" required data-validation-required-message="Email"></input>
+                        <label>Messages</label>
+                        <textarea ref={(input) => this.ctrls.message = input} defaultValue="" rows={5} className="" placeholder="Review" id="" required data-validation-required-message="Please enter a review."></textarea>
+                    </div>
+                    <br />
+                    <div className={this.props.reviewsFormBlock2}>
+                        <button onClick={this.submitHandler} className="">Send</button>
                     </div>
                 </form>
-                <div className="row">
-                    <div className="panel-group">
-                            {list}
+                <div className="">
+                    <div className="">
+                        {list}
                     </div>
-                    <div className="col-xs-12">
+                    <div className="">
                         {moreLess}
                     </div>
                 </div>
             </div>
         );
     }
+    private submitHandler() {
+    }
+    private rateChange(rate: number) {
+    }
+    private addHandler() {
+    }
+    private moreHandler() {
+        if (typeof this.props.showHandler !== "undefined") {
+            this.props.showHandler(true);
+        }
+    }
+    private lessHandler() {
+        if (typeof this.props.showHandler !== "undefined") {
+            this.props.showHandler(false);
+        }
+    }
+
 }
+
+export default ReviewsPresentation;

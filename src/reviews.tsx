@@ -1,136 +1,68 @@
-﻿import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import ReviewsPresentation from './reviewsPresentation.tsx';
-interface review { name: string, stars: number, message: string }
-
-interface props {
-    sendReviewToServer?: any,
-    reviews?: Array<review>,
-    sending?: any,
-    showNumber?: number
+﻿import * as React from "react";
+import * as ReactDOM from "react-dom";
+import ReviewsPresentation from "./reviewsPresentation.tsx";
+/**
+ * The props act as data input and connection to larger application.
+ * Everything is controlled externally apart from the most basic of stateful operations.
+ * @param {function} sendReviewToServer This is a function which will perform a get operation.
+ * @param {array} reviews An array of reviews to display relating to some topic or request.
+ * @param {boolean} sending A boolean to let the component know a review has been sent.
+ * @param {string} titleClass The style of the review title.
+ * @param {number} stars The number of stars the users review should have.
+ * @param {string} reviewsClass This is the class name of the full reviews component.
+ */
+interface IProps {
+    sendReviewToServer?: any;
+    reviews?: review[];
+    sending?: any;
+    showNumber?: number;
+    titleStyle?: string;
+    title?: string;
+    stars?: number;
+    reviewsClass?: string;
 }
-interface state {
-    titleStyle: string,
-    initialStars: number,
-    reviewsToPass: Array<review>
+/**
+ * @param reviewsToPass {array} The reviews which are currently on show. 
+ */
+interface IState {
+    reviewsToPass: review[];
 
 }
-export default class Reviews extends React.Component<props, state> {
-    sendingClass = "";
-    constructor(props: any) {
-        super(props);
-    }
-    counterToShow = 1;
-    static defaultProps = {
-        reviews: [
-            { name: "Alex11", stars: 4, message: "Something like a message" },
-            { name: "Alex2", stars: 4, message: "Something like a message" },
-            { name: "Alex3", stars: 4, message: "Something like a message" },
-            { name: "Alex4", stars: 4, message: "Something like a message" },
-            { name: "Alex5", stars: 4, message: "Something like a message" },
-            { name: "Alex6", stars: 4, message: "Something like a message" },
-            { name: "Alex7", stars: 4, message: "Something like a message" },
-            { name: "Alex8", stars: 4, message: "Something like a message" },
-            { name: "Alex9", stars: 4, message: "Something like a message" },
-            { name: "Alex10", stars: 4, message: "Something like a message" },
-            { name: "Alex11", stars: 4, message: "Something like a message" },
-            { name: "Alex12", stars: 4, message: "Something like a message" }
-
-        ],
-        sendReviewToServer: null as any,
+class Reviews extends React.Component<IProps, IState> {
+    public static defaultProps = {
+        reviews: [] as review[],
+        reviewsClass: "reviews",
+        sendReviewToServer: [] as any,
         sending: false,
-        showNumber: 5
+        showNumber: 0,
+        stars: 0,
+        title: "Reviews",
+    };
+    constructor() {
+        super();
+        this.state = {reviewsToPass: []};
+        this.showHandler = this.showHandler.bind(this);
     }
-    componentWillUpdate() {
+    public showHandler(){
     }
-    componentWillMount() {
-        let temp = [] as any
-        for (let i = 0; i < this.props.showNumber; i++) {
-            temp.push(this.props.reviews[i]);
-        }
-        this.setState({
-            titleStyle: "",
-            initialStars: 0,
-            reviewsToPass: temp
-        })
-    }
-    init() {
-        console.log("Over");
-        this.setState({
-            titleStyle: "animated bounce",
-            initialStars: 0,
-            reviewsToPass: this.state.reviewsToPass
-        })
-        for (let i = 0; i < 7; i++) {
-            (function (i: number) {
-                setTimeout(function () {
-                    let temp: number;
-                    if (i === 6) {
-                        temp = 0
-                    } else {
-                        temp = i
-                    }
-                    this.setState({
-                        titleStyle: "animated bounce",
-                        initialStars: temp
-                    })
-                    console.log("i: " + i)
-                }.bind(this), 1000 * i)
-            }.bind(this))(i)
-        }
-    }
-    showHandler(more: Boolean) {
-        console.log("more :" + more)
-        if (more) {
-            this.counterToShow += 1;
-            let tempLength: number;
-            if (this.props.showNumber * this.counterToShow <= this.props.reviews.length) {
-                tempLength = this.props.showNumber * this.counterToShow
-            } else {
-                tempLength = this.props.reviews.length
-            }
-            let temp = [] as any;
-            for (let i = 0; i < tempLength; i++) {
-                temp.push(this.props.reviews[i]);
-            }
-            this.setState({
-                titleStyle: "",
-                initialStars: 0,
-                reviewsToPass: temp
-            })
-        } else {
-            let tempLength: number;
-            if (this.props.showNumber <= this.state.reviewsToPass.length) {
-                tempLength = this.props.showNumber
-            } else {
-                tempLength = this.state.reviewsToPass.length
-            }
-            let temp = this.state.reviewsToPass;
-            for (let i = 0; i < tempLength; i++) {
-                temp.pop();
-            }
-            this.setState({
-                titleStyle: "",
-                initialStars: 0,
-                reviewsToPass: temp
-            })
-        }
-    }
-    render() {
+    public render() {
         return (
-            <div onMouseOver={this.init.bind(this)}>
+            <div className={this.props.reviewsClass}>
                 <ReviewsPresentation
                     reviews={this.state.reviewsToPass}
                     submit={this.props.sendReviewToServer}
-                    titleStyle={this.state.titleStyle}
-                    initialStars={this.state.initialStars}
-                    showHandler = {this.showHandler.bind(this)}
-                    />
+                    title={this.props.title}
+                    stars={this.props.stars}
+                    showHandler={this.showHandler}
+                />
             </div>
         );
     }
 }
+
+export default Reviews;
+
 ReactDOM.render(
     <Reviews/>,
-    document.getElementById('root')
-)
+    document.getElementById("root"),
+);
