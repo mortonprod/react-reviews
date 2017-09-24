@@ -1,7 +1,6 @@
 ﻿import "animate.css";
 import * as React from "react";
 import "./reviewsPresentation.scss";
-
 /**
  * @param {string} reviews The reviews to show.
  * @param {function} submit The submit button is an action to take after pressin submit.
