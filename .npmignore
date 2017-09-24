@@ -1,0 +1,7 @@
+src
+.travis.yml
+.gitignore
+.eslintrc
+.babelrc
+.editorconfig
+webpack.config.js
