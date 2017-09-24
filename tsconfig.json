@@ -1,6 +1,7 @@
 ﻿{
   "files": [
-    "./src/reviews.tsx"
+    "./src/reviews.tsx",
+    "myTypings.d.ts"
  	],
   "compilerOptions": {
 		"module": "commonjs",
