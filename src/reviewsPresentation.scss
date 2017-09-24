@@ -1,0 +1,76 @@
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+  
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin border-box {
+  box-sizing: border-box; 
+}
+
+.clearfix {
+  *zoom: 1;
+
+  &::before,
+
+  &::after {
+    content: '';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+.reviews {
+  margin: 0 auto;
+  width: 100%;
+
+  &,
+  &::after,
+  &::before {
+    margin: 0;
+    padding: 0;
+    @include border-box;
+  }
+
+  &__img {
+    height: auto;
+    max-width: 100%;
+    width: auto;
+  }
+
+  &__header {
+    text-align: center;
+  }
+
+  &__form {
+    text-align: center;
+
+    &__block1 {
+      text-align: center;
+    }
+  }
+
+  &--modifier {
+    color: #008000;
+    display: flex;
+    height: 100px;
+    transform: scale('1.0');
+  }
+  @include desktop {
+    display: flex;
+  }
+}
+
