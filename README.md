@@ -1,5 +1,5 @@
 # React-reviews
-
+[![Build Status](https://travis-ci.org/mortonprod/react-reviews.svg?branch=master)](https://travis-ci.org/mortonprod/react-reviews)
 This is a react review component. It will take in reviews data as a property.
 
 ## Installation
