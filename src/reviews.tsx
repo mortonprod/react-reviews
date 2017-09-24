@@ -22,7 +22,7 @@ interface IProps {
     reviewsClass?: string;
 }
 /**
- * @param reviewsToPass {array} The reviews which are currently on show. 
+ * @param reviewsToPass {array} The reviews which are currently on show.
  */
 interface IState {
     reviewsToPass: review[];
@@ -43,7 +43,8 @@ class Reviews extends React.Component<IProps, IState> {
         this.state = {reviewsToPass: []};
         this.showHandler = this.showHandler.bind(this);
     }
-    public showHandler(){
+    public showHandler(): any {
+        return null;
     }
     public render() {
         return (
@@ -61,5 +62,3 @@ class Reviews extends React.Component<IProps, IState> {
 }
 
 export default Reviews;
-
-

@@ -46,9 +46,11 @@ class ReviewsPresentation extends React.Component<IProps> {
         this.moreHandler = this.moreHandler.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
     }
-    public componentWillMount() {
+    public componentWillMount(): any {
+        return null;
     }
-    public componentWillUpdate(nextProps: IProps, nextState: {}) {
+    public componentWillUpdate(nextProps: IProps, nextState: {}): any {
+        return null;
     }
     /**
      * This function will render the full component.
@@ -100,16 +102,16 @@ class ReviewsPresentation extends React.Component<IProps> {
             <div className="">
                 <h1 className={this.props.reviewsHeader}>{this.props.title}</h1>
                 <form name="" id="" noValidate className={this.props.reviewsForm}>
-                    <div className={this.props.reviewsFormBlock1}>
+                    <div>
                         <label>Name</label>
-                        <input ref={(input) => {this.ctrls.name = input}} defaultValue="" className="" id="" required data-validation-required-message="Name"></input>
+                        <input ref={(input) => {this.ctrls.name = input; }} defaultValue="" className="" id="" required data-validation-required-message="Name"/>
                         <label>Email</label>
-                        <input ref={(input) => this.ctrls.email = input} defaultValue="" className="" id="" required data-validation-required-message="Email"></input>
+                        <input ref={(input) => this.ctrls.email = input} defaultValue="" className="" id="" required data-validation-required-message="Email"/>
                         <label>Messages</label>
-                        <textarea ref={(input) => this.ctrls.message = input} defaultValue="" rows={5} className="" placeholder="Review" id="" required data-validation-required-message="Please enter a review."></textarea>
+                        <textarea ref={(input) => this.ctrls.message = input} defaultValue="" rows={5} className="" placeholder="Review" id="" required data-validation-required-message="Please enter a review."/>
                     </div>
                     <br />
-                    <div className={this.props.reviewsFormBlock2}>
+                    <div>
                         <button onClick={this.submitHandler} className="">Send</button>
                     </div>
                 </form>
@@ -124,11 +126,14 @@ class ReviewsPresentation extends React.Component<IProps> {
             </div>
         );
     }
-    private submitHandler() {
+    private submitHandler(): any {
+        return null;
     }
-    private rateChange(rate: number) {
+    private rateChange(rate: number): any {
+        return null;
     }
-    private addHandler() {
+    private addHandler(): any {
+        return null;
     }
     private moreHandler() {
         if (typeof this.props.showHandler !== "undefined") {

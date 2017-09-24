@@ -13,6 +13,37 @@ $desktop-width: 1024px;
     @content;
   }
 }
+/// Block Element
+/// @access public
+/// @param {String} $element - Element's name
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+/// Block Modifier
+/// @access public
+/// @param {String} $modifier - Modifier's name
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+/// @alias element
+@mixin e($element) {
+  @include element($element) {
+    @content;
+  }
+}
+
+/// @alias modifier
+@mixin m($modifier) {
+  @include modifier($modifier) {
+    @content;
+  }
+}
 
 @mixin border-box {
   box-sizing: border-box; 
@@ -55,12 +86,8 @@ $desktop-width: 1024px;
     text-align: center;
   }
 
-  &__form {
+  @include e('form') {
     text-align: center;
-
-    &__block1 {
-      text-align: center;
-    }
   }
 
   &--modifier {
