@@ -1,6 +1,6 @@
 ﻿import * as React from "react";
 import * as ReactDOM from "react-dom";
-import ReviewsPresentation from "./reviewsPresentation.tsx";
+import ReviewsPresentation from "./reviewsPresentation";
 /**
  * The props act as data input and connection to larger application.
  * Everything is controlled externally apart from the most basic of stateful operations.
@@ -62,7 +62,4 @@ class Reviews extends React.Component<IProps, IState> {
 
 export default Reviews;
 
-ReactDOM.render(
-    <Reviews/>,
-    document.getElementById("root"),
-);
+

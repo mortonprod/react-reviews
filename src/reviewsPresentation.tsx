@@ -1,5 +1,4 @@
-﻿import "animate.css";
-import * as React from "react";
+﻿import * as React from "react";
 import "./reviewsPresentation.scss";
 /**
  * @param {string} reviews The reviews to show.
@@ -12,8 +11,8 @@ import "./reviewsPresentation.scss";
  * @param {string} title The heading of review component
  */
 interface IProps {
-    reviews: review[];
-    submit: any;
+    reviews?: review[];
+    submit?: any;
     reviewsHeader?: string;
     reviewsForm?: string;
     stars?: number;

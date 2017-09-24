@@ -19,7 +19,9 @@ module.exports = {
 			 new ExtractTextPlugin("index.css")			 
 	],
 	//tslint:config,
-   extensions: ["",".scss", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"],
+   resolve:{
+     extensions: ["",".scss", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+   },
    module: {
 		preLoaders: [
 			{
