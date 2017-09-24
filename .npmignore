@@ -4,4 +4,6 @@ src
 .eslintrc
 .babelrc
 .editorconfig
+.coveralls.yml
+coverage
 webpack.config.js
