@@ -6,10 +6,11 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   entry: {
-    index: './src/reviews.tsx'
+    index: './src/reviews.tsx',
+    'index.min': './src/reviews.tsx'
   },
   plugins: [
-    new UglifyJSPlugin({sourcemap:true}),
+    new UglifyJSPlugin({sourcemap:true,minimize: true,include: /\.min\.js$/}),
 		new webpack.DefinePlugin({
 			'process.env': {
 			  'NODE_ENV': JSON.stringify('production')

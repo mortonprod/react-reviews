@@ -8,7 +8,7 @@ var webpack = require('webpack');
 module.exports = {
 	 plugins: [
 			new StyleLintPlugin(),
-			new CleanWebpackPlugin(['dist']),
+			new CleanWebpackPlugin(['../dist']),
 			new ExtractTextPlugin("index.css")		 
 	],
    resolve:{
@@ -24,18 +24,20 @@ module.exports = {
        loaders: [
 		   { test: /\.scss$/, loader: ExtractTextPlugin.extract("css-loader!postcss-loader!sass-loader")},
            { test: /\.css$/, loader: ExtractTextPlugin.extract("css-loader!postcss-loader")},		   
-           { test: /\.tsx?$/, loader: "ts-loader" },
+           { test: /\.tsx?$/, loader: "awesome-typescript-loader",exclude: /node_modules/,query:{declaration:false} },
            {
                test: /\.(png|ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
                loader: 'file-loader',
            }
        ]
    },
+    devtool: 'source-map',
 	 output: {
 			 filename: '[name].js',
 			 path: path.resolve(__dirname,"..", 'dist'),
 		     library: 'reactReviews',
-		     libraryTarget: 'umd'
+			 libraryTarget: 'umd',
+			 umdNamedDefine: true
 
 	 }
 };
