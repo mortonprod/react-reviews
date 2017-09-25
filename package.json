@@ -1,10 +1,10 @@
 {
   "name": "@mortonprod/react-reviews",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "A small react component for reviews",
   "keywords": [],
   "author": "Alexander Morton <mortonprod@gmail.com>",
-  "homepage": "https://github.com/mortonprod/react-reviews",
+  "homepage": "https://github.com/mortonprod/react-reviews#readme",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "module": "./dist/lib/reviews.js",
