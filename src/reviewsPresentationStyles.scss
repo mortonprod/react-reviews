@@ -83,11 +83,28 @@ $desktop-width: 1024px;
   }
 
   &__header {
+    background-color: #008000;
     text-align: center;
   }
+  @include e('buttons') {
+    text-align: center;
 
+  }
+  @include e('list') {
+    @include e('item') {
+      text-align: center;
+
+    }
+
+  }
   @include e('form') {
     text-align: center;
+    @include e('input') {
+      text-align: center;
+    }
+    @include e('send') {
+      text-align: center;
+    }
   }
 
   &--modifier {

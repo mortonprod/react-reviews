@@ -5,6 +5,9 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
+  entry: {
+    index: './src/reviews.tsx'
+  },
   plugins: [
     new UglifyJSPlugin({sourcemap:true}),
 		new webpack.DefinePlugin({

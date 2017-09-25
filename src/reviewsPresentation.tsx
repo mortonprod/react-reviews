@@ -1,36 +1,21 @@
 ﻿import * as React from "react";
-import "./reviewsPresentation.scss";
-/**
- * @param {string} reviews The reviews to show.
- * @param {function} submit The submit button is an action to take after pressin submit.
- * @param {string} titleStyle The style of the title.
- * @param {number} stars The number of stars the users review should have.
- * @param {function} moreHandler Request more reviews
- * @param {function} showHandler
- * @param {boolean} isNoMoreReviews This is a boolean to remove the show more button.
- * @param {string} title The heading of review component
- */
-interface IProps {
-    reviews?: review[];
-    submit?: any;
-    reviewsHeader?: string;
-    reviewsForm?: string;
-    stars?: number;
-    moreHandler?: any;
-    showHandler?: any;
-    isNoMoreReviews?: boolean;
-    title?: string;
-}
+import "./reviewsPresentationStyles.scss";
+
 /**
  * This component should have not state. The props should completely define this component.
  */
-class ReviewsPresentation extends React.Component<IProps> {
+class ReviewsPresentation extends React.Component<IPropsReviewPresentation> {
     public static defaultProps = {
         initialStars: 5,
         moreHandler: null as any,
         reviews: [] as any,
+        reviewsButtons: "reviews__button",
         reviewsForm: "reviews__form",
+        reviewsFormInput: "reviews__form__input",
+        reviewsFormSend: "reviews__form__send",
         reviewsHeader: "reviews__header",
+        reviewsList: "reviews__list",
+        reviewsListItem: "reviews__list__item",
         submit: null as any,
         title: "Reviews",
     };
@@ -49,7 +34,7 @@ class ReviewsPresentation extends React.Component<IProps> {
     public componentWillMount(): any {
         return null;
     }
-    public componentWillUpdate(nextProps: IProps, nextState: {}): any {
+    public componentWillUpdate(nextProps: IPropsReviewPresentation, nextState: {}): any {
         return null;
     }
     /**
@@ -67,7 +52,7 @@ class ReviewsPresentation extends React.Component<IProps> {
             );
         } else {
             moreLess = (
-                <div>
+                <div className={this.props.reviewsButtons}>
                     <button onClick={this.moreHandler} className="">See More Reviews</button>
                     <button onClick={this.lessHandler} className="">See Fewer Reviews</button>
                 </div>
@@ -76,7 +61,7 @@ class ReviewsPresentation extends React.Component<IProps> {
         const list: any[] = [];
         for (let i = 0; i < this.props.reviews.length; i++) {
             list.push(
-                <article className="" key={i}>
+                <article className={this.props.reviewsListItem} key={i}>
                     <div className="">
                         <h4>{this.props.reviews[i].name} </h4>
                     </div>
@@ -95,14 +80,13 @@ class ReviewsPresentation extends React.Component<IProps> {
                     <div className="">
                         <p>{this.props.reviews[i].date}</p>
                     </div>
-                </article>
-            );
+                </article>);
         }
         return (
             <div className="">
                 <h1 className={this.props.reviewsHeader}>{this.props.title}</h1>
                 <form name="" id="" noValidate className={this.props.reviewsForm}>
-                    <div>
+                    <div className={this.props.reviewsFormInput}>
                         <label>Name</label>
                         <input ref={(input) => {this.ctrls.name = input; }} defaultValue="" className="" id="" required data-validation-required-message="Name"/>
                         <label>Email</label>
@@ -111,15 +95,15 @@ class ReviewsPresentation extends React.Component<IProps> {
                         <textarea ref={(input) => this.ctrls.message = input} defaultValue="" rows={5} className="" placeholder="Review" id="" required data-validation-required-message="Please enter a review."/>
                     </div>
                     <br />
-                    <div>
+                    <div className={this.props.reviewsFormSend}>
                         <button onClick={this.submitHandler} className="">Send</button>
                     </div>
                 </form>
-                <div className="">
-                    <div className="">
+                <div>
+                    <div className={this.props.reviewsList}>
                         {list}
                     </div>
-                    <div className="">
+                    <div>
                         {moreLess}
                     </div>
                 </div>

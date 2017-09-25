@@ -13,9 +13,12 @@
     "target": "es5",
     "jsx": "react",
     "experimentalDecorators": true,
+    "lib": [ "es2015", "dom" ],
     "emitDecoratorMetadata": true,
     "noEmitOnError": false,
-    "outDir": "./dist/"
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./"
   },
   "include": [
     "./src/*"

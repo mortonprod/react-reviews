@@ -6,19 +6,11 @@ var StyleLintPlugin = require('stylelint-webpack-plugin');
 var webpack = require('webpack');
 
 module.exports = {
-	entry: {
-		   index: './src/reviews.tsx'
-	 },
 	 plugins: [
-		   new StyleLintPlugin(),
-		   new CleanWebpackPlugin(['dist']),
-		   new HtmlWebpackPlugin({
-			     title: 'Production',
-					 template: './index.html'
-			 }),
-			 new ExtractTextPlugin("index.css")			 
+			new StyleLintPlugin(),
+			new CleanWebpackPlugin(['dist']),
+			new ExtractTextPlugin("index.css")		 
 	],
-	//tslint:config,
    resolve:{
      extensions: ["",".scss", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
    },
@@ -42,8 +34,8 @@ module.exports = {
 	 output: {
 			 filename: '[name].js',
 			 path: path.resolve(__dirname,"..", 'dist'),
-		   library: 'reactReviews',
-		   libraryTarget: 'umd'
+		     library: 'reactReviews',
+		     libraryTarget: 'umd'
 
 	 }
 };
