@@ -6,6 +6,10 @@ import "./reviewsPresentationStyles.scss";
  */
 class ReviewsPresentation extends React.Component<IPropsReviewPresentation> {
     public static defaultProps = {
+        defaultEmail: "",
+        defaultMessage: "",
+        defaultName: "",
+        headerImg: "",
         initialStars: 5,
         moreHandler: null as any,
         reviews: [] as any,
@@ -16,6 +20,7 @@ class ReviewsPresentation extends React.Component<IPropsReviewPresentation> {
         reviewsHeader: "reviews__header",
         reviewsList: "reviews__list",
         reviewsListItem: "reviews__list__item",
+        sendImg: "",
         submit: null as any,
         title: "Reviews",
     };
@@ -84,19 +89,21 @@ class ReviewsPresentation extends React.Component<IPropsReviewPresentation> {
         }
         return (
             <div className="">
+                <img src={this.props.headerImg}  alt={"Send"}/>
                 <h1 className={this.props.reviewsHeader}>{this.props.title}</h1>
-                <form name="" id="" noValidate className={this.props.reviewsForm}>
+                <form name="" id="" className={this.props.reviewsForm}>
                     <div className={this.props.reviewsFormInput}>
                         <label>Name</label>
-                        <input ref={(input) => {this.ctrls.name = input; }} defaultValue="" className="" id="" required data-validation-required-message="Name"/>
+                        <input ref={(input) => {this.ctrls.name = input; }} type="text" defaultValue={this.props.defaultName} className="" id="" required data-validation-required-message="Name"/>
                         <label>Email</label>
-                        <input ref={(input) => this.ctrls.email = input} defaultValue="" className="" id="" required data-validation-required-message="Email"/>
+                        <input ref={(input) => this.ctrls.email = input} defaultValue={this.props.defaultEmail} className="" id="" required data-validation-required-message="Email" type="email"/>
                         <label>Messages</label>
-                        <textarea ref={(input) => this.ctrls.message = input} defaultValue="" rows={5} className="" placeholder="Review" id="" required data-validation-required-message="Please enter a review."/>
+                        <textarea ref={(input) => this.ctrls.message = input} defaultValue={this.props.defaultMessage} rows={5} className="" placeholder="Review" id="" required data-validation-required-message="Please enter a review."/>
                     </div>
                     <br />
                     <div className={this.props.reviewsFormSend}>
                         <button onClick={this.submitHandler} className="">Send</button>
+                        <img src={this.props.sendImg}  alt={"Send"}/>
                     </div>
                 </form>
                 <div>
@@ -111,13 +118,9 @@ class ReviewsPresentation extends React.Component<IPropsReviewPresentation> {
         );
     }
     private submitHandler(): any {
-        return null;
-    }
-    private rateChange(rate: number): any {
-        return null;
-    }
-    private addHandler(): any {
-        return null;
+        if (this.props.submit) {
+            this.props.submit(this.ctrls.name.value, this.ctrls.email.value, this.ctrls.message.value);
+        }
     }
     private moreHandler() {
         if (typeof this.props.showHandler !== "undefined") {

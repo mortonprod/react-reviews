@@ -32,12 +32,12 @@ module.exports = {
        ]
    },
     devtool: 'source-map',
-	 output: {
-			 filename: '[name].js',
-			 path: path.resolve(__dirname,"..", 'dist'),
-		     library: 'reactReviews',
-			 libraryTarget: 'umd',
-			 umdNamedDefine: true
-
-	 }
+	output: {
+		filename: '[name].js',
+		path: path.resolve(__dirname,"..", 'dist'),
+		library: 'reactReviews',
+		libraryTarget: 'umd',
+		umdNamedDefine: true,
+		//publicPath: '/'
+	}
 };

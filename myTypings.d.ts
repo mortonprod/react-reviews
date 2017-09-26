@@ -1,3 +1,8 @@
+declare module "*.svg" {
+    const content: any;
+    export default content;
+  }
+
 /**
  * A review is composed of name,pic,verified,date, star rating and message. 
  */
@@ -14,7 +19,12 @@ interface review { name: string, pic:string,verified:boolean,date:string, stars:
  * @param {string} title The heading of review component
  */
 interface IPropsReviewPresentation {
+    defaultEmail?: string;
+    defaultMessage?: string;
+    defaultName?: string;
     reviews?: review[];
+    headerImg: string;
+    sendImg: string;
     submit?: any;
     reviewsButtons?: any;
     reviewsHeader?: string;
@@ -43,6 +53,8 @@ interface IPropsReviewPresentation {
  */
 interface IPropsReviews {
     sendReviewToServer?: any;
+    sendImg: string;    
+    headerImg: string;
     reviews?: review[];
     sending?: any;
     showNumber?: number;

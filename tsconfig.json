@@ -21,7 +21,8 @@
     "outDir": "./"
   },
   "include": [
-    "./src/*"
+    "./src/*",
+    "./src/images/*"
   ],
   "exclude": [
     "node_modules",

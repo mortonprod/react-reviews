@@ -66,9 +66,16 @@ $desktop-width: 1024px;
 
 .reviews {
   margin: 0 auto;
-  width: 100%;
+  max-width: 1000px;
+  width: 300px;
 
-  &,
+  @include tablet {
+    width: 700px;
+  }
+  @include desktop {
+    width: 1000px;
+  }
+
   &::after,
   &::before {
     margin: 0;
@@ -82,9 +89,15 @@ $desktop-width: 1024px;
     width: auto;
   }
 
-  &__header {
-    background-color: #008000;
+  @include e('header') {
+    color: #1ddf79;
+    font-size: 3em;
     text-align: center;
+    text-shadow: 0.5px 0.5px #000;
+    width: 100%;
+    @include tablet {
+      width: 700px;
+    }
   }
   @include e('buttons') {
     text-align: center;
@@ -112,9 +125,6 @@ $desktop-width: 1024px;
     display: flex;
     height: 100px;
     transform: scale('1.0');
-  }
-  @include desktop {
-    display: flex;
   }
 }
 

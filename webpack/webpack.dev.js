@@ -20,5 +20,5 @@ entry: {
 			title: 'Production',
 			template: './index.html'
 	})
-  ]
+	]
 });
