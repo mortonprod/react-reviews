@@ -10,16 +10,13 @@ const ReactDOMServer  = require("react-dom/server");
 const React  = require("react");
 var createReactClass = require('create-react-class');
 var expressValidator = require('express-validator');
-var ReactReviews = require('./dist/index.js').default;
-
-
+var reactReviews = require('./dist/index.js').Reviews;
 
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
 app.set("port", process.env.PORT || 3001);
-console.log("Port: " + process.env.PORT + " mode:  " + process.env.NODE_ENV);
 app.use("/__documentation/", express.static("./docs"));
 app.use("/", express.static("dist"));
 
@@ -28,8 +25,8 @@ app.use("/", express.static("dist"));
  */
 app.get('/', (req, res) => {
     //const element = React.createFactory(Reviews)({});
-    console.log("Reviews: " + ReactReviews);
-    const element = React.createFactory(ReactReviews)();
+    console.log("Reviews: " + JSON.stringify(reactReviews));
+    const element = React.createFactory(reactReviews)();
     const out = ReactDOMServer.renderToString(element,{});
     console.log("Output: " + out);
     res.send(out);

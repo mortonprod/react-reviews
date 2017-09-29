@@ -1,2 +1,2 @@
-import Stars from "./stars";
-export {Stars};
+import Stars, {getStars} from "./stars";
+export {Stars, getStars};

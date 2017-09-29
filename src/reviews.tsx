@@ -18,7 +18,7 @@ function submit(output: IOutputReviewPresentation) {
  * This component take in bunch of reviews produced by review factory.
  * Dealing with passing the correct number of reviews.
  */
-class Reviews extends React.Component<IPropsReviews, IStateReviews> {
+export class Reviews extends React.Component<IPropsReviews, IStateReviews> {
     public static defaultProps = {
         defaultEmail: "",
         defaultMessage: "",
@@ -142,7 +142,7 @@ class Reviews extends React.Component<IPropsReviews, IStateReviews> {
                     verifiedImg={this.props.verifiedImg}
                     fullStarImg={this.props.fullStarImg}
                     hollowStarImg={this.props.hollowStarImg}
-                    reviewsListItem={this.props.reviewsListItemClass}
+                    reviewsListItemClass={this.props.reviewsListItemClass}
                 />
                 <div>
                     {moreLess}
@@ -171,5 +171,3 @@ class Reviews extends React.Component<IPropsReviews, IStateReviews> {
 
     }
 }
-
-export default Reviews;

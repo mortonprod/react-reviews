@@ -6,8 +6,8 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   entry: {
-    index: './src/reviews.tsx',
-    'index.min': './src/reviews.tsx'
+    index: './src/index.ts',
+    'index.min': './src/index.ts'
   },
   plugins: [
     new UglifyJSPlugin({sourcemap:true,minimize: true,include: /\.min\.js$/}),

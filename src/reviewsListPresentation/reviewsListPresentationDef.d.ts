@@ -1,6 +1,6 @@
 interface IPropsReviewsListPresentation {
     reviews: IReview[];
-    reviewsListItem: string;
+    reviewsListItemClass: string;
     exclamationImg: string;
     likeImg: string;
     dislikeImg: string;

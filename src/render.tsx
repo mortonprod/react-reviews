@@ -4,7 +4,7 @@
  */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import Reviews from "./reviews";
+import {Reviews} from "./reviews";
 import reviewsCreator from "./reviewsCreator";
 // import excImg from "./images/exc.svg";
 // import ReviewsPresentation from "./reviewsPresentation";

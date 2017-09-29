@@ -23,7 +23,7 @@ class ReviewsListPresentation extends React.Component<IPropsReviewsListPresentat
                 <div key={i}>
                     <ReviewPresentation
                         review={this.props.reviews[i]}
-                        reviewClass={this.props.reviewsListItem}
+                        reviewClass={this.props.reviewsListItemClass}
                         excImg={this.props.exclamationImg}
                         likeImg={this.props.likeImg}
                         dislikeImg={this.props.dislikeImg}

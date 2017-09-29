@@ -13,7 +13,7 @@ const starStyle = {
  * It needs the number of stars to create and then the number which should be filled.
  * The hover event will let the parent class know which one is being hovered above.
  */
-function getStars(fullStarImg: string, hollowStarImg: string, numberToCreate: number, numberFilled: number, onHover: any) {
+export function getStars(fullStarImg: string, hollowStarImg: string, numberToCreate: number, numberFilled: number, onHover: any) {
     const stars = [] as any[];
     for (let i = 0; i < numberToCreate; i++) {
         if (i < numberFilled) {
