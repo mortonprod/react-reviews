@@ -17,7 +17,7 @@
     "build:umd": "webpack --config ./webpack/webpack.prod.js --display-error-details",
     "build": "npm run build:umd && npm run build:es5 && npm run build:es6 && gulp",
     "start": "webpack-dev-server --open --config ./webpack/webpack.dev.js",
-    "start:server": "node server.js",
+    "start:server": "npm run build && node server.js",
     "test": "npm run build && jest ./__tests__/*",
     "test:watch": "npm run build && jest --watch",
     "test:coverage": "npm run build && jest ./__tests__/ --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
