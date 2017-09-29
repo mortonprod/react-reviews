@@ -1,0 +1,110 @@
+@import './mixinVariables';
+
+.reviews {
+  color: #7a7a7a;
+  font-family: Dosis;
+  margin: 0 auto;
+  max-width: 1000px;
+  width: 300px;
+
+  @include tablet {
+    width: 700px;
+  }
+  @include desktop {
+    width: 1000px;
+  }
+  @include e('img') {
+    display: block;
+    height: auto;
+    margin: auto;
+    width: 100px;
+    @include tablet {
+      width: 100px;
+    }
+    @include desktop {
+      width: 200px;
+    }
+  }
+
+  @include e('header') {
+    color: #1ddf79;
+    font-size: 3em;
+    text-align: center;
+    text-shadow: 0.5px 0.5px #000;
+    width: 100%;
+    @include tablet {
+      width: 700px;
+    }
+  }
+  @include e('buttons') {
+    text-align: center;
+
+  }
+  @include e('form') {
+    margin-bottom: 100px;
+    text-align: center;
+    width: 100%;
+    @include e('input') {
+      display: inline-block;
+      vertical-align: middle;
+      width: 300px;
+
+      
+      label,
+      input,
+      textarea {
+        display: block;
+        margin: auto;
+      }
+
+      input,
+      textarea {
+        border: solid 1px #7a7a7a;
+        font-size: 1em;
+        margin: auto;
+        transform: scale(0);
+        transition: all 1s;
+        width: 300px;
+        // stylelint-disable selector-no-qualifying-type
+        &.hover {
+          transform: scale(1); 
+        }
+      }
+
+      textarea {
+        height: 200px;
+      }
+
+      label {
+        font-size: 1.5em;
+        transform: scale(1);
+        transition: all 1s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+    @include e('send') {
+      display: inline-block;
+      vertical-align: middle;
+      width: 300px;
+
+      input {
+        height: 50px;
+      }
+
+      label {
+        display: block;
+      }
+
+    }
+  }
+  @include e('button') {
+    button {
+      display: inline-block;
+      margin: auto;
+      width: 50%;
+    }
+  }
+}

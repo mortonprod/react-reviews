@@ -1,0 +1,2 @@
+interface IPropsStar { fullStarImg: string; hollowStarImg: string; number: number; numberFilled: number; canChange: boolean; getStarNumber?: any; starStyle?: string; starsStyle?: string }
+interface IStateStar { stars: Array<HTMLImageElement> }

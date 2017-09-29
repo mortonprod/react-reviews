@@ -1,0 +1,50 @@
+$tablet-width: 768px;
+$desktop-width: 1024px;
+
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+  
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+/// Block Element
+/// @access public
+/// @param {String} $element - Element's name
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+/// Block Modifier
+/// @access public
+/// @param {String} $modifier - Modifier's name
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+/// @alias element
+@mixin e($element) {
+  @include element($element) {
+    @content;
+  }
+}
+
+/// @alias modifier
+@mixin m($modifier) {
+  @include modifier($modifier) {
+    @content;
+  }
+}
+
+@mixin border-box {
+  box-sizing: border-box; 
+}

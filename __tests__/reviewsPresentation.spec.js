@@ -1,6 +1,7 @@
 import {shallow, mount} from "enzyme";
 import * as React from "react";
 import Reviews from "../dist";
+//import Reviews from "../dist/lib"
 
 it('should render the reviews component', () => {
     const wrapper = shallow(
