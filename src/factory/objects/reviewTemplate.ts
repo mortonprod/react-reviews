@@ -1,8 +1,10 @@
 /**
- * This constructor function(class) will simply return the object passed.
- * The prototype functions will then be attached to check object.
+ * This class is inherited by fake and default class.
+ * It describes the bases for all other review type objects.
  */
-class ReviewObj {
+
+export default class ReviewTemplate {
+    private static handlers = [] as any;
     public date = null as Date;
     public dislikes = 0;
     public likes = 0;
@@ -11,7 +13,7 @@ class ReviewObj {
     public pic = "";
     public stars = 0;
     public verified = false;
-
+    public reports = 0;
     constructor(obj: review) {
         this.date = obj.date;
         this.dislikes = obj.dislikes;
@@ -21,8 +23,10 @@ class ReviewObj {
         this.pic = obj.pic;
         this.stars = obj.stars;
         this.verified = obj.verified;
+        this.reports = obj.reports;
         this.likeFunc = this.likeFunc.bind(this);
         this.dislikeFunc = this.dislikeFunc.bind(this);
+        this.reportFunc = this.reportFunc.bind(this);
     }
     /**
      * This function will increase the like element in the object by one.
@@ -30,25 +34,31 @@ class ReviewObj {
     public likeFunc() {
         console.log("Like:" + this.likes);
         this.likes = this.likes + 1;
+        this.fire();
     }
     /**
      * This function will increase the like element in the object by one.
      */
     public dislikeFunc() {
-        console.log(this.dislikes);
+        console.log("dislike: " + this.dislikes);
         this.dislikes = this.dislikes + 1;
+        this.fire();
+    }
+    public reportFunc() {
+        console.log("Reports: " + this.reports);
+        this.reports = this.reports + 1;
+        this.fire();
+    }
+    /**
+     * This function will take all the functions which need to fire when we update the review.
+     */
+    public subscribe(fn: any) {
+        ReviewTemplate.handlers.push(fn);
+    }
+    public fire() {
+        ReviewTemplate.handlers.forEach((el: any) => {
+            el({});
+
+        });
     }
 }
-/**
- * Reviews is the single store of data on the client. It could in theory be changed in multiple places(Client side routes).
- * As input you take json and as output you create an object with function which can change itself.
- * So if it changes it 
- */
-function reviewsCreator(reviews: any): IReview[] {
-    const output = reviews.map((el: review) => {
-        return new ReviewObj(el);
-    });
-    return output;
-}
-
-export default reviewsCreator;

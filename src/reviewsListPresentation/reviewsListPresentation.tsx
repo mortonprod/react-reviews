@@ -3,19 +3,20 @@ import {ReviewPresentation} from "./reviewPresentation";
 import "./reviewsListPresentationStyles.scss";
 
 /**
- * This component will take a list of reviews and put them on the screen.
- * It's only job is comparing the last list and smoothly transitioning.
+ * It will deal with putting the reviews nicely on the screen.
+ * It is subscribed to the review store to update when needed.
+ * Seems silly to update the full list for a single review change but react 
+ * should handle it with it's diff engine and giving each element a unique key.
  */
 class ReviewsListPresentation extends React.Component<IPropsReviewsListPresentation> {
     public static defaultProps = {
     };
     constructor(props: any) {
         super(props);
+        props.reviews.forEach((el: any) => {
+            el.subscribe(this.setState.bind(this));
+        });
     }
-    /**
-     * This function will render the full component.
-     * It will render everything from the props and attach eventhandlers from the props.
-     */
     public render() {
         const list: any[] = [];
         for (let i = 0; i < this.props.reviews.length; i++) {

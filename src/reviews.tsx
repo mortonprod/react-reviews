@@ -8,7 +8,7 @@ const starNumber = 5;
 const starFill = 3;
 
 /**
- * This function can also be used on the backend to move form validation.
+ * 
  */
 function submit(output: IOutputReviewPresentation) {
     console.log(JSON.stringify(output));
@@ -32,8 +32,8 @@ export class Reviews extends React.Component<IPropsReviews, IStateReviews> {
         likeImg: "",
         moreHandler: null as any,
         notVerifiedImg: "",
-        reviews: [] as IReview[],
-        reviewsButtons: "reviews__button",
+        reviews: [] as IReviewDefault[] | IReviewFake,
+        reviewsButtonsClass: "reviews__button",
         reviewsClass: "reviews",
         reviewsFormClass: "reviews__form",
         reviewsFormInputClass: "reviews__form__input",
@@ -95,7 +95,7 @@ export class Reviews extends React.Component<IPropsReviews, IStateReviews> {
         let moreLess: any;
         if (this.props.isNoMoreReviews) {
             moreLess = (
-                <div>
+                <div className={this.props.reviewsButtonsClass}>
                     <h2>No More Reviews</h2>
                     <button onClick={this.lessHandler} className="">See Fewer Reviews</button>
                 </div>
@@ -109,17 +109,17 @@ export class Reviews extends React.Component<IPropsReviews, IStateReviews> {
             );
         }
         return (
-            <div>
+            <div className={this.props.reviewsClass}>
                 <img className={this.props.reviewsImgClass} src={this.props.headerImg}  alt={"Send"}/>
                 <h1 className={this.props.reviewsHeaderClass}>{this.props.title}</h1>
                 <form name="" id="" className={this.props.reviewsFormClass}>
                     <div className={this.props.reviewsFormInputClass}>
                         <label htmlFor="name">Name</label>
-                        <input ref={(input) => this.ctrls.name = input} onClick={this.expand.bind(this, "name")} type="text" defaultValue={this.props.defaultName} className={this.state.reviewsFormInputName} id="name" placeholder="Your Name" required data-validation-required-message="Please enter a name"/>
+                        <input ref={(input) => this.ctrls.name = input} onClick={this.expand.bind(this, "name")} type="text" defaultValue={this.props.defaultName} className={this.state.reviewsFormInputName} id="name" placeholder="Your Name" required data-validation-required-message="Please enter a valid name" title={"Your name goes here"}/>
                         <label htmlFor="email">Email</label>
-                        <input ref={(input) => this.ctrls.email = input} onClick={this.expand.bind(this, "email")} defaultValue={this.props.defaultEmail} id="email" className={this.state.reviewsFormInputEmail} placeholder="Your Email" required data-validation-required-message="Please enter an email" type="email"/>
+                        <input ref={(input) => this.ctrls.email = input} onClick={this.expand.bind(this, "email")} defaultValue={this.props.defaultEmail} id="email" className={this.state.reviewsFormInputEmail} placeholder="Your Email" required data-validation-required-message="Please enter an valid email" type="email" title={"Your email goes here"}/>
                         <label htmlFor="review">Review</label>
-                        <textarea ref={(input) => this.ctrls.message = input} onClick={this.expand.bind(this, "review")} defaultValue={this.props.defaultMessage} rows={5} className={this.state.reviewsFormInputReview} placeholder="Your Review" id="review" required data-validation-required-message="Please enter a review."/>
+                        <textarea ref={(input) => this.ctrls.message = input} onClick={this.expand.bind(this, "review")} defaultValue={this.props.defaultMessage} rows={5} className={this.state.reviewsFormInputReview} placeholder="Your Review" id="review" required data-validation-required-message="Please enter a review." title={"Finally, your review goes here"}/>
                     </div>
                     <div className={this.props.reviewsFormSendClass}>
                         <Stars
@@ -130,7 +130,7 @@ export class Reviews extends React.Component<IPropsReviews, IStateReviews> {
                             numberFilled={starFill}
                             getStarNumber={this.getStarNumber}
                         />
-                        <input type="image" name="submit" onClick={this.submitHandler}  src={this.props.sendImg}  alt={"Send"}/>
+                        <input type="image" name="submit" title={"Click Me to send"} onClick={this.submitHandler}  src={this.props.sendImg}  alt={"Send"}/>
                     </div>
                 </form>
                 <ReviewsListPresentation

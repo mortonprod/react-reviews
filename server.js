@@ -1,3 +1,4 @@
+"use strict"
 /**
  * This server will serve the component in many different forms.
  * Don't use the npm module directly(expect in script tag) but the dist folder produced
@@ -8,28 +9,54 @@ const express = require("express");
 const bodyParser = require('body-parser');
 const ReactDOMServer  = require("react-dom/server");
 const React  = require("react");
+const request = require('request-promise')
 var createReactClass = require('create-react-class');
 var expressValidator = require('express-validator');
 var reactReviews = require('./dist/index.js').Reviews;
 
+const PORT = 3000;
+const options = {
+    method: 'GET',
+    uri: 'https://randomuser.me/api/?results=50',
+    json: true 
+}
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(expressValidator());
-app.set("port", process.env.PORT || 3001);
+app.set("port", process.env.PORT || 3000);
 app.use("/__documentation/", express.static("./docs"));
 app.use("/", express.static("dist"));
+
+if (process.env.NODE_ENV === "development"){
+    console.log("Add cross origin");
+    app.use(function (req, res, next) {
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+        next();
+    });
+}else{
+    console.log("No cross origin");   
+}
 
 /**
  * This will import the UMD module.
  */
 app.get('/', (req, res) => {
     //const element = React.createFactory(Reviews)({});
-    console.log("Reviews: " + JSON.stringify(reactReviews));
+    //console.log("Reviews: " + JSON.stringify(reactReviews));
     const element = React.createFactory(reactReviews)();
     const out = ReactDOMServer.renderToString(element,{});
     console.log("Output: " + out);
     res.send(out);
+});
+
+app.get('/fakes', (req, res) => {
+    request(options).then(function (response) {
+      console.log("fakes " + response);
+      res.send(response);
+    }).catch(function (err) {
+        throw(Error(err));
+    })
 });
 
 /**

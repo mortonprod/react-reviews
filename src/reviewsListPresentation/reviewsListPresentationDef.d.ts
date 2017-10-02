@@ -1,5 +1,5 @@
 interface IPropsReviewsListPresentation {
-    reviews: IReview[];
+    reviews: IReviewDefault[] | IReviewFake[];
     reviewsListItemClass: string;
     exclamationImg: string;
     likeImg: string;

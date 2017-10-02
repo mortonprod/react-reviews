@@ -41,11 +41,13 @@
 
   }
   @include e('form') {
-    margin-bottom: 100px;
+    margin: auto;
+    margin-bottom: 50px;
     text-align: center;
     width: 100%;
     @include e('input') {
       display: inline-block;
+      height: 350px;
       vertical-align: middle;
       width: 300px;
 
@@ -62,13 +64,13 @@
         border: solid 1px #7a7a7a;
         font-size: 1em;
         margin: auto;
-        transform: scale(0);
-        transition: all 1s;
+        //transform: scale(0);
+        //transition: all 1s;
         width: 300px;
         // stylelint-disable selector-no-qualifying-type
-        &.hover {
-          transform: scale(1); 
-        }
+        //&.hover {
+        //  transform: scale(1); 
+        //}
       }
 
       textarea {
@@ -81,30 +83,63 @@
         transition: all 1s;
 
         &:hover {
+          color: #3ba6ef;
           transform: scale(1.1);
         }
+      }
+      @include tablet {
+        width: 320px;
+      }
+      @include desktop {
+        width: 500px;
       }
     }
     @include e('send') {
       display: inline-block;
+      height: auto;
       vertical-align: middle;
-      width: 300px;
+      width: 320px;
+      @include tablet {
+        height: 350px;
+      }
 
       input {
         height: 50px;
+        transform: scale(1);
+        transition: transform 1s;
+
+        &:hover {
+          animation: shake20 1s forwards;
+        }
       }
 
       label {
         display: block;
       }
-
     }
   }
   @include e('button') {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
     button {
-      display: inline-block;
-      margin: auto;
-      width: 50%;
+      background-color: transparent;
+      border-color: transparent;
+      font-size: 1em;
+      margin: 10px;
+      transform: scale(1);
+      transition: transform 1s;
+      width: 300px;
+
+      &:hover {
+        color: #3ba6ef;
+        transform: scale(1.05);
+      }
+
+      &:focus {
+        outline: 0;
+      }
     }
   }
 }

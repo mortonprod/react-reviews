@@ -48,3 +48,41 @@ $desktop-width: 1024px;
 @mixin border-box {
   box-sizing: border-box; 
 }
+@mixin shake-mixin($shakes, $angle) {
+  $percentage: 100/$shakes;
+  @for $i from 0 through $shakes {
+    @if $i == 0 {
+      #{$i*$percentage}% { 
+        transform: rotateZ(0deg);
+      }
+    }
+    @else if $i == $shakes {
+      #{$i*$percentage}% { 
+        transform: rotateZ(0deg);
+      }
+    }
+    @else if  $i % 2 == 0 {
+      #{$i*$percentage}% { 
+        transform: rotateZ(-#{$angle}deg);
+      }
+    }
+    @else if $i % 2 == 1 {
+      #{$i*$percentage}% { 
+        transform: rotateZ(#{$angle}deg);
+      }
+    }
+  }
+}
+$name: 'shake20';
+$number: 5;
+$angle: 30;
+
+@mixin keyframes( $animationName ) {
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+/*This runs both mixims above.*/
+@include keyframes($name) {
+  @include shake-mixin($number,$angle);
+}

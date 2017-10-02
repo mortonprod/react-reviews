@@ -1,8 +1,37 @@
 /**
  * A review is composed of name;pic;verified;date; star rating and message. 
  */
-interface review { name: string; pic:string;verified:boolean;date:Date; stars: number; message: string; likes: number; dislikes:number}
-interface IReview extends review { likeFunc: any; dislikeFunc: any}
+interface review { name: string; pic:string;verified:boolean;date:Date; stars: number; message: string; likes: number; dislikes:number, reports:number}
+interface IReviewDefault extends review { likeFunc: any; dislikeFunc: any, reportFunc: any, subscribe: any, fire: any;}
+
+interface IReviewFake extends IReviewDefault {
+    location: string;
+    email: string;
+    username: string;
+}
+
+interface IFake { 
+    name: {
+        title:string; 
+        first:string; 
+        last: string;
+    } 
+    location: {
+        street: string;
+        city: string;
+        state: string;
+        postcode: string;
+    }
+    email: string;
+    login: {
+        username: string;
+    }
+    dob: string;
+    registered: string;
+    picture: {
+        large: string;
+    }
+}
 
 interface IOutputReviewPresentation  {
     message?: string;
@@ -47,7 +76,7 @@ interface IClasses {
  * Everything is controlled externally apart from the most basic of stateful operations.
  */
 interface IPropsReviews extends IDefaultInput, IImagesInput, IClasses {
-    reviews?: IReview[];
+    reviews?: IReviewDefault[] | IReviewFake[];
     sending?: any;
     showNumber?: number;
     title?: string;
